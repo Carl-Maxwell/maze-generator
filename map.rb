@@ -42,7 +42,7 @@ class Map
 
 	def generate
 		x, y = [0, 0]
-		
+
 		frontier = [@nodes[x][y]]
 
 		while frontier.length > 0
@@ -60,22 +60,10 @@ class Map
 			frontier = @nodes.flatten.select { |node| !node.filled? && node.adjacent.any? { |elem| elem.filled? } }
 		end
 	end
-
-	def pathfind
-		pathfindy = Pathfinder.new(@width, @height, self)
-
-
-		(@width * @height).times do |i|
-			pathfindy.explore
-			break if pathfindy.complete?
-		end
-
-		pathfindy.display
-	end
 end
 
-#m = Map.new(26,10)
-m = Map.new(2,2)
+m = Map.new(26,10)
+# m = Map.new(2,2)
 
 print "Triangulating the osscilating motion of ultimate doom!\n"
 
@@ -87,6 +75,4 @@ print m.display
 
 print "Fixing foot upon the path of ultimate victory!\n"
 
-print m.pathfind
-
-
+# print m.pathfind
